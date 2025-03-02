@@ -65,7 +65,7 @@ struct UserProfileView: View {
                     .autocapitalization(.none)
                     VStack(alignment: .leading) {
                         Text("Phone Number:")
-                        TextField("Phone Number", text: $phoneNumber)
+                        TextField("(000) 000-0000", text: $phoneNumber)
                             .onChange(of: phoneNumber) {
                                if !phoneNumber.isEmpty {
                                    phoneNumber = phoneNumber.formatPhoneNumber()
