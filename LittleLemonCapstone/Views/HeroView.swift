@@ -20,11 +20,12 @@ struct HeroView: View {
                 HStack{
                     VStack(alignment: .leading){
                         Text("Chicago")
+//                            .font(Font.custom("Kailasa", size: 32))
                             .font(.subTitleFont())
                             .foregroundStyle(Color.llWhite)
                             .padding(.bottom, 2)
                         Text("We are a family owned\n Mediterranean restaurant,\n focused on traditional\n recipes served with a\n modern twist.")
-                            .font(.leadText())
+                            .font(Font.custom("Kailasa", size: 18))
                             .foregroundStyle(Color.llWhite)
                     }
                     Spacer(minLength: 10)
