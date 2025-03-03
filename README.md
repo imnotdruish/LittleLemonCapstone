@@ -14,6 +14,9 @@ showing a login screen to list menu items and provide a profile view to store pr
 
 ## Wireframe, Branding, and UI Design
 Figma was used to produce wireframe, UI design, and branding.
+<img src="LittleLemonCapstone/Misc/Figma Files/Branding.png" alt="Branding" width=400 height: 200>
+<img src="LittleLemonCapstone/Misc/Figma Files/littlelemon_wireframe.png" alt="Wireframe" width=200 height: 400> <img src="LittleLemonCapstone/Misc/Figma Files/littlelemon_UIDesign.png" alt="UI Design" width=200 height: 400>
+
 
 
 ## Getting Started
