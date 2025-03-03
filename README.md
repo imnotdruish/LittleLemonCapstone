@@ -3,10 +3,7 @@ This is the capstone project for the Meta iOS Developer Professional Certificate
 showing a login screen to list menu items and provide a profile view to store preferences of the User like email, phone number, and notifications.
 
 ## Preview
-<img src="LittleLemonCapstone/Misc/Screenshots/OnBoarding.png" alt="OnBoarding Screen" width=200 height=400>
-<img src="LittleLemonCapstone/Misc/Screenshots/Main.png" alt="Main" width=200 height=400>
-<img src="LittleLemonCapstone/Misc/Screenshots/ItemDetail.png" alt="Item Detail" width=200 height=400>
-<img src="LittleLemonCapstone/Misc/Screenshots/Profile.png" alt="Profile" width=200 height=400>
+<img src="LittleLemonCapstone/Misc/Screenshots/OnBoarding.png" alt="OnBoarding Screen" width=200 height=400><img src="LittleLemonCapstone/Misc/Screenshots/Main.png" alt="Main" width=200 height=400><img src="LittleLemonCapstone/Misc/Screenshots/ItemDetail.png" alt="Item Detail" width=200 height=400><img src="LittleLemonCapstone/Misc/Screenshots/Profile.png" alt="Profile" width=200 height=400>
 
 ## Features
 - Onboarding screen that prompts users to enter name and email.
