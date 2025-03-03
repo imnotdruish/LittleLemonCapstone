@@ -20,27 +20,26 @@ struct HeroView: View {
                 HStack{
                     VStack(alignment: .leading){
                         Text("Chicago")
-//                            .font(Font.custom("Kailasa", size: 32))
                             .font(.subTitleFont())
                             .foregroundStyle(Color.llWhite)
                             .padding(.bottom, 2)
-                        Text("We are a family owned\n Mediterranean restaurant,\n focused on traditional\n recipes served with a\n modern twist.")
-                            .font(Font.custom("Kailasa", size: 18))
+                        Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
+                            .font(.highlightText())
                             .foregroundStyle(Color.llWhite)
                     }
                     Spacer(minLength: 10)
                     Image("Hero-Image")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(maxWidth: 125, maxHeight: 150)
+                        .frame(maxWidth: 125, maxHeight: 140)
                         .clipShape(Rectangle())
                         .cornerRadius(10)
                 }
-                .offset(y: -15)
+                .offset(y: -25)
             }
             .padding(.horizontal, 20)
         }
-        .frame(maxHeight: 225)
+        .frame(maxHeight: 250)
     }
 }
 

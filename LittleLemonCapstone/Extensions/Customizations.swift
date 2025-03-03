@@ -100,40 +100,33 @@ struct RoundedTextFieldStyle: TextFieldStyle {
 
 extension Font {
     static func displayFont() -> Font {
-        return Font.custom("MarkaziTextMedium", size: 40)
+        return Font.custom("Charter", size: 48).weight(.bold)
     }
     
     static func subTitleFont() -> Font {
-        return Font.custom("MarkaziTextRegular", size: 32)
+        return Font.custom("Charter", size: 32).weight(.regular)
     }
     
     static func leadText() -> Font {
-        return Font.custom("KarlaMedium", size: 18)
-    }
-    
-    static func regularText() -> Font {
-        return Font.custom("MarkaziTextRegular", size: 18)
+        return Font.custom("Helvetica Neue", size: 18).weight(.medium)
     }
     
     static func sectionTitle() -> Font {
-        return Font.custom("KarlaBold", size: 20)
-    }
-    
-    static func sectionCategories() -> Font {
-        return Font.custom("KarlaExtraBold", size: 16)
-    }
-    
-    static func paragraphText() -> Font {
-        return Font.custom("KarlaRegular", size: 16)
-    }
-    
-    static func highlightText() -> Font {
-        return Font.custom("KarlaMedium", size: 16)
+        return Font.custom("Helvetica Neue", size: 20).weight(.black)
     }
     
     static func cardTitle() -> Font {
-        return Font.custom("KarlaBold", size: 18)
+        return Font.custom("Helvetica Neue", size: 18).weight(.bold)
     }
+    
+    static func paragraphText() -> Font {
+        return Font.custom("Helvetica Neue", size: 16).weight(.regular)
+    }
+    
+    static func highlightText() -> Font {
+        return Font.custom("Helvetica Neue", size: 16).weight(.medium)
+    }
+
 }
 
 extension String {

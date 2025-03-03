@@ -19,35 +19,42 @@ struct OrderView: View {
         ZStack {
             Rectangle()
                 .fill(Color.llGreen)
-                .frame(maxHeight: 80)
-            HStack(alignment: .center) {
+                .frame(maxHeight: 60)
+            HStack {
                 Image(systemName: "magnifyingglass")
                 TextField("Search Menu", text: $searchText)
+                    .font(.cardTitle())
             }
             .padding(10)
-            .frame(maxWidth: 300, maxHeight: 50)
+            .frame(maxWidth: 400, maxHeight: 40)
             .background(Color.llWhite)
             .cornerRadius(20)
             .padding(.horizontal)
         }
-        .offset(y: -30)
+        .offset(y: -40)
         Text("ORDERS FOR DELIVERY!")
+            .font(.sectionTitle())
+            .offset(y: -20)
         HStack {
             Toggle("Starters", isOn: $isStartersShown)
                 .toggleStyle(ButtonToggleStyle())
                 .tint(Color.llSalmon)
+                .font(.cardTitle())
             Toggle("Mains", isOn: $isMainsShown)
                 .toggleStyle(ButtonToggleStyle())
                 .tint(Color.llSalmon)
+                .font(.cardTitle())
             Toggle("Desserts", isOn: $isDessertsShown)
                 .toggleStyle(ButtonToggleStyle())
                 .tint(Color.llSalmon)
+                .font(.cardTitle())
             Toggle("Drinks", isOn: $isDrinksShown)
                 .toggleStyle(ButtonToggleStyle())
                 .tint(Color.llSalmon)
+                .font(.cardTitle())
         }
-        .padding()
-        .frame(maxHeight: 50)
+        .padding(.horizontal, 10)
+        .frame(maxHeight: 30)
         FetchedObjects(predicate: buildPredicate(),
                        sortDescriptors: buildSortDescriptors()) {
             (dishes: [Dish]) in

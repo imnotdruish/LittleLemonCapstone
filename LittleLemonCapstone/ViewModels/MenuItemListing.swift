@@ -16,7 +16,7 @@ struct MenuItemListing: View {
             VStack {
                 Text(dish.title ?? "")
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.sectionCategories())
+                    .font(.cardTitle())
                     .foregroundStyle(Color.black)
                 Spacer()
                 Text(dish.itemDescription ?? "")
