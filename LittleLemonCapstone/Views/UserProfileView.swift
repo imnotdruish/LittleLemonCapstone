@@ -8,72 +8,115 @@
 import SwiftUI
 
 struct UserProfileView: View {
-        
-    @StateObject private var viewModel = ViewModel()
-
+    
+    enum Field: CaseIterable {
+        case firstName
+        case lastName
+        case email
+        case phoneNumber
+    }
+    
     @Environment(\.presentationMode) var presentation
+    
+    @StateObject private var viewModel = ViewModel()
+    @FocusState private var isKeyboardShown: Field?
     
     @State private var firstName = ""
     @State private var lastName = ""
     @State private var email = ""
     @State private var phoneNumber = ""
-
+    
     @State private var orderStatuses = true
     @State private var passwordChanges = true
     @State private var specialOffers = true
     @State private var newsletter = true
-
+    
     @State private var isLoggedOut = false
     @State private var showAlert = false
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false){
-            NavigationLink(destination: OnBoardingView(), isActive: $isLoggedOut) { }
-            VStack(spacing: 5){
-                VStack(alignment: .leading) {
-                    Text("Avatar")
-                        .font(.leadText())
-                        .padding(.leading)
-                    HStack(spacing: 0) {
-                        Image("Profile")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 100, height: 100)
-                            .clipShape(Circle())
-                            .padding(.trailing)
-                        Button("Change"){}
-                            .buttonStyle(ButtonAccentReverse())
-                        Button("Remove"){}
-                            .buttonStyle(ButtonAccent())
-                        Spacer()
-                    }
-                    VStack(alignment: .leading) {
-                        Text("First Name:")
-                        TextField("", text: $firstName)
-                            .textFieldStyle(RoundedTextFieldStyle())
-                    }
-                    VStack(alignment: .leading) {
-                        Text("Last Name:")
-                        TextField("Last Name", text: $lastName)
-                            .textFieldStyle(RoundedTextFieldStyle())
-                    }
-                    VStack(alignment: .leading) {
-                        Text("Email:")
-                        TextField("Email", text: $email)
-                            .textFieldStyle(RoundedTextFieldStyle())
-                    }
-                    .autocapitalization(.none)
-                    VStack(alignment: .leading) {
-                        Text("Phone Number:")
-                        TextField("(000) 000-0000", text: $phoneNumber)
-                            .onChange(of: phoneNumber) {
-                               if !phoneNumber.isEmpty {
-                                   phoneNumber = phoneNumber.formatPhoneNumber()
+        NavigationStack{
+            ScrollView(.vertical, showsIndicators: false){
+                NavigationLink(destination: OnBoardingView(), isActive: $isLoggedOut) { }
+                VStack{
+                    AvatarView()
+                    VStack {
+                        VStack(alignment: .leading) {
+                            Text("First Name:")
+                            ZStack(alignment: .leading){
+                                if firstName.isEmpty {
+                                    Text("Enter First Name")
+                                        .font(.cardTitle())
+                                        .foregroundStyle(Color.llGreen)
+                                        .padding(.leading)
                                 }
-                             }
-                            .textFieldStyle(RoundedTextFieldStyle())
+                                TextField("", text: $firstName)
+                                    .textFieldStyle(RoundedTextFieldStyle())
+                                    .focused($isKeyboardShown, equals: .firstName)
+                                    .submitLabel(.done)
+                            }
+                        }
+                        VStack(alignment: .leading) {
+                            Text("Last Name:")
+                            ZStack(alignment: .leading){
+                                if lastName.isEmpty {
+                                    Text("Enter Last Name")
+                                        .font(.cardTitle())
+                                        .foregroundStyle(Color.llGreen)
+                                        .padding(.leading)
+                                }
+                                TextField("", text: $lastName)
+                                    .textFieldStyle(RoundedTextFieldStyle())
+                                    .focused($isKeyboardShown, equals: .lastName)
+                                    .submitLabel(.done)
+                            }
+                        }
+                        VStack(alignment: .leading) {
+                            Text("Email:")
+                            ZStack(alignment: .leading){
+                                if email.isEmpty {
+                                    Text("Enter Email Address")
+                                        .font(.cardTitle())
+                                        .foregroundStyle(Color.llGreen)
+                                        .padding(.leading)
+                                }
+                                TextField("", text: $email)
+                                    .textFieldStyle(RoundedTextFieldStyle())
+                                    .keyboardType(.emailAddress)
+                                    .focused($isKeyboardShown, equals: .email)
+                                    .submitLabel(.done)
+                            }
+                        }
+                        .autocapitalization(.none)
+                        VStack(alignment: .leading) {
+                            Text("Phone Number:")
+                            ZStack(alignment: .leading){
+                                if phoneNumber.isEmpty {
+                                    Text("(000) 000-0000")
+                                        .font(.cardTitle())
+                                        .foregroundStyle(Color.llGreen)
+                                        .padding(.leading)
+                                }
+                                TextField("", text: $phoneNumber)
+                                    .onChange(of: phoneNumber) {
+                                        if !phoneNumber.isEmpty {
+                                            phoneNumber = phoneNumber.formatPhoneNumber()
+                                        }
+                                    }
+                                    .textFieldStyle(RoundedTextFieldStyle())
+                                    .keyboardType(.phonePad)
+                                    .focused($isKeyboardShown, equals: .phoneNumber)
+                                    .toolbar {
+                                        ToolbarItem(placement: .keyboard) {
+                                            Button("Done") {
+                                                isKeyboardShown = nil
+                                            }
+                                        }
+                                    }
+                            }
+                        }
+                        .disableAutocorrection(true)
                     }
-                    .disableAutocorrection(true)
                 }
                 .padding(.horizontal)
                 VStack(alignment: .leading) {
@@ -150,6 +193,8 @@ struct UserProfileView: View {
                     }
                 }
             }
+            .navigationTitle(Text("Personal information"))
+            .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 firstName = viewModel.firstName
                 lastName = viewModel.lastName
@@ -162,9 +207,6 @@ struct UserProfileView: View {
                 newsletter = viewModel.newsletter
             }
         }
-        .navigationTitle(Text("Personal information"))
-        .navigationBarTitleDisplayMode(.inline)
-
     }
 }
 

@@ -12,7 +12,7 @@ struct HeroView: View {
     var body: some View {
         ZStack{
             Rectangle()
-                .fill(Color.accentColor)
+                .fill(Color.llGreen)
             VStack(alignment: .leading){
                 Text("Little Lemon")
                     .font(.displayFont())

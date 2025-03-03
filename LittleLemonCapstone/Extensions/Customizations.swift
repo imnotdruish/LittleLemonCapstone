@@ -90,11 +90,18 @@ struct CheckboxToggleStyle: ToggleStyle {
 }
 
 struct RoundedTextFieldStyle: TextFieldStyle {
+    @Environment(\.colorScheme) var colorScheme
+
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
             .padding(10)
+            .foregroundStyle(Color.llGreen)
             .background(Color.llWhite)
+            .accentColor(colorScheme == .light ? Color.llWhite : Color.llGreen)
             .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(colorScheme == .light ? Color.llGreen : Color.secondary, lineWidth: 2))
     }
 }
 

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct OrderView: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    
     @State var isStartersShown = true
     @State var isMainsShown = true
     @State var isDessertsShown = true
@@ -22,39 +24,55 @@ struct OrderView: View {
                 .frame(maxHeight: 60)
             HStack {
                 Image(systemName: "magnifyingglass")
-                TextField("Search Menu", text: $searchText)
-                    .font(.cardTitle())
+                ZStack(alignment: .leading){
+                    if searchText.isEmpty {
+                        Text("Search Menu")
+                            .font(.cardTitle())
+                            .foregroundStyle(colorScheme == .light ? Color.llWhite : Color.llGreen)
+                    }
+                    TextField("", text: $searchText)
+                        .submitLabel(.search)
+                        .accentColor(colorScheme == .light ? Color.llWhite : Color.llGreen)
+                }
             }
             .padding(10)
             .frame(maxWidth: 400, maxHeight: 40)
-            .background(Color.llWhite)
+            .background(colorScheme == .light ? Color.llGray : Color.llWhite)
+            .foregroundStyle(colorScheme == .light ? Color.llWhite : Color.llGreen)
             .cornerRadius(20)
             .padding(.horizontal)
         }
         .offset(y: -40)
-        Text("ORDERS FOR DELIVERY!")
-            .font(.sectionTitle())
-            .offset(y: -20)
-        HStack {
-            Toggle("Starters", isOn: $isStartersShown)
-                .toggleStyle(ButtonToggleStyle())
-                .tint(Color.llSalmon)
-                .font(.cardTitle())
-            Toggle("Mains", isOn: $isMainsShown)
-                .toggleStyle(ButtonToggleStyle())
-                .tint(Color.llSalmon)
-                .font(.cardTitle())
-            Toggle("Desserts", isOn: $isDessertsShown)
-                .toggleStyle(ButtonToggleStyle())
-                .tint(Color.llSalmon)
-                .font(.cardTitle())
-            Toggle("Drinks", isOn: $isDrinksShown)
-                .toggleStyle(ButtonToggleStyle())
-                .tint(Color.llSalmon)
-                .font(.cardTitle())
+        VStack(alignment: .leading){
+            HStack {
+                Text("ORDERS FOR DELIVERY!")
+                    .font(.sectionTitle())
+                Image("Delivery-Van")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 40, height: 20)
+            }
+            HStack {
+                Toggle("Starters", isOn: $isStartersShown)
+                    .toggleStyle(ButtonToggleStyle())
+                    .tint(Color.llSalmon)
+                    .font(.cardTitle())
+                Toggle("Mains", isOn: $isMainsShown)
+                    .toggleStyle(ButtonToggleStyle())
+                    .tint(Color.llSalmon)
+                    .font(.cardTitle())
+                Toggle("Desserts", isOn: $isDessertsShown)
+                    .toggleStyle(ButtonToggleStyle())
+                    .tint(Color.llSalmon)
+                    .font(.cardTitle())
+                Toggle("Drinks", isOn: $isDrinksShown)
+                    .toggleStyle(ButtonToggleStyle())
+                    .tint(Color.llSalmon)
+                    .font(.cardTitle())
+            }
         }
         .padding(.horizontal, 10)
-        .frame(maxHeight: 30)
+        .frame(maxHeight: 50)
         FetchedObjects(predicate: buildPredicate(),
                        sortDescriptors: buildSortDescriptors()) {
             (dishes: [Dish]) in
