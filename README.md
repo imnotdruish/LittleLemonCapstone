@@ -3,7 +3,7 @@ This is the capstone project for the Meta iOS Developer Professional Certificate
 showing a login screen to list menu items and provide a profile view to store preferences of the User like email, phone number, and notifications.
 
 ## Preview
-
+Files located here! [Screenshots]("https://github.com/imnotdruish/LittleLemonCapstone/Misc/Screenshots")
 <table>
   <tr>
     <td><img src="LittleLemonCapstone/Misc/Screenshots/OnBoarding.png" alt="OnBoarding Screen" width=200 height=400></td>
@@ -22,7 +22,7 @@ showing a login screen to list menu items and provide a profile view to store pr
 
 ## Wireframe, Branding, and UI Design
 Figma was used to produce wireframe, UI design, and branding.
-
+Files located here! [Figma]("https://github.com/imnotdruish/LittleLemonCapstone/Misc/FigmaFiles")
 <table>
   <tr>
     <td><img src="LittleLemonCapstone/Misc/FigmaFiles/Branding.png" alt="Branding" width=450 height=400></td>
