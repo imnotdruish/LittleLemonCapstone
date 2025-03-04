@@ -10,8 +10,15 @@ import SwiftUI
 struct Home: View {
     
     var body: some View {
-        Main()
-            .navigationBarBackButtonHidden(true)
+        TabView {
+            Tab("Main", systemImage: "menucard") {
+                Main()
+                    .navigationBarBackButtonHidden(true)
+            }
+            Tab("Profile", systemImage: "person.crop.circle.fill") {
+                UserProfileView()
+            }
+        }
     }
 }
 
