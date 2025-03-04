@@ -13,7 +13,7 @@ struct Home: View {
         TabView {
             Tab("Main", systemImage: "menucard") {
                 Main()
-                    .navigationBarBackButtonHidden(true)
+                    .toolbar(.hidden, for: .navigationBar)
             }
             Tab("Profile", systemImage: "person.crop.circle.fill") {
                 UserProfileView()
